@@ -1,96 +1,96 @@
 #include<stdio.h>//standard input output
-#include <stdlib.h>//standard library ¿©±â¿¡ randÇÔ¼ö°¡ µé¾î°¡ ÀÖ´Ù.
+#include <stdlib.h>//standard library ì—¬ê¸°ì— randí•¨ìˆ˜ê°€ ë“¤ì–´ê°€ ìˆë‹¤.
 #include<string.h>
-#include<windows.h>//È­¸é Å¬¸®¾î°¡ µé¾îÀÖ´Ù printf("cls");
+#include<windows.h>//í™”ë©´ í´ë¦¬ì–´ê°€ ë“¤ì–´ìˆë‹¤ printf("cls");
 int main(void)
 {
-	int cho, hp, damage, per, today = 1, i, j, pati = 0, map, weapon, defense, mhp, work, mdamage, temp, iper;//patigue ÇÇ·Î choice ¼±ÅÃ percent ÆÛ¼¾Æ® chracter Ä³¸¯ÅÍ mhp ¸ó½ºÅÍhp
+	int cho, hp, damage, per, today = 1, i, j, pati = 0, map, weapon, defense, mhp, work, mdamage, temp, iper;//patigue í”¼ë¡œ choice ì„ íƒ percent í¼ì„¼íŠ¸ chracter ìºë¦­í„° mhp ëª¬ìŠ¤í„°hp
 	char YN;
-	char item[50], monster[10], job[10];
-	//¾ÆÀÌÅÛÀ» ¾òÀ» ¶§ randÇÔ¼ö¸¦ 0ºÎÅÍ 100±îÁö ÇÏ°í ¾îµğºÎÅÍ ¾îµğ±îÁö´Â ¾î¶² ¾ÆÀÌÅÛÀ» ¾òÀ» ¼ö ÀÖµµ·Ï ÇÑ´Ù! 
-	//¿¹¸¦ µé¾î 1~10±îÁö 1¹ø ¾ÆÀÌÅÛÀ» ¾ò´Â´Ù°í ÇßÀ» ¶§ 100ÀÌ ÃÖ´ë´Ï±ñ ¾òÀ» È®·üÀº 10%ÀÌ´Ù. 
-	while (1)//Á÷¾÷ ¼±ÅÃ
+	char item[100], monster[10], job[10];
+	//ì•„ì´í…œì„ ì–»ì„ ë•Œ randí•¨ìˆ˜ë¥¼ 0ë¶€í„° 100ê¹Œì§€ í•˜ê³  ì–´ë””ë¶€í„° ì–´ë””ê¹Œì§€ëŠ” ì–´ë–¤ ì•„ì´í…œì„ ì–»ì„ ìˆ˜ ìˆë„ë¡ í•œë‹¤! 
+	//ì˜ˆë¥¼ ë“¤ì–´ 1~10ê¹Œì§€ 1ë²ˆ ì•„ì´í…œì„ ì–»ëŠ”ë‹¤ê³  í–ˆì„ ë•Œ 100ì´ ìµœëŒ€ë‹ˆê¹ ì–»ì„ í™•ë¥ ì€ 10%ì´ë‹¤. 
+	while (1)//ì§ì—… ì„ íƒ
 	{
 	resurrection:
 
-		printf("Ä³¸¯ÅÍ¸¦ ¼±ÅÃÇÏ½Ê½Ã¿À.\n1. Àü»ç  2. ±Ã¼ö  3.  ¸¶¹ı»ç\n>>");
+		printf("ìºë¦­í„°ë¥¼ ì„ íƒí•˜ì‹­ì‹œì˜¤.\n1. ì „ì‚¬  2. ê¶ìˆ˜  3.  ë§ˆë²•ì‚¬\n>>");
 		scanf_s("%d", &cho);
 		system("cls");
 		if (cho > 3 || 1 > cho)
 		{
-			printf("3°¡Áö Á÷¾÷¸¸ ¼±ÅÃ°¡´ÉÇÕ´Ï´Ù.\n\n");
+			printf("3ê°€ì§€ ì§ì—…ë§Œ ì„ íƒê°€ëŠ¥í•©ë‹ˆë‹¤.\n\n");
 			continue;
 		}
 		switch (cho)
 		{
 		case 1:
 		{
-			printf("Àü»ç\n");
+			printf("ì „ì‚¬\n");
 			printf("HP: 150\n");
-			printf("°ø°İ·Â: 7~9\n");
-			printf("¹æ¾î·Â: 8\n");
-			printf("»ç¿ë¹«±â: ÇÑ¼Õ°Ë, ¾ç¼Õ°Ë, ¹æÆĞ, Ã¢\n");
-			printf("°©¿Ê: Áß°©\n\n");
+			printf("ê³µê²©ë ¥: 7~9\n");
+			printf("ë°©ì–´ë ¥: 8\n");
+			printf("ì‚¬ìš©ë¬´ê¸°: í•œì†ê²€, ì–‘ì†ê²€, ë°©íŒ¨, ì°½\n");
+			printf("ê°‘ì˜·: ì¤‘ê°‘\n\n");
 
 			getchar();
-			printf("Á¤¸»·Î ¼±ÅÃÇÏ½Ã°Ú½À´Ï±î? Y/N \n>>");
+			printf("ì •ë§ë¡œ ì„ íƒí•˜ì‹œê² ìŠµë‹ˆê¹Œ? Y/N \n>>");
 			scanf("%c", &YN);
 
 			if (YN == 'y' || YN == 'Y')
 			{
 				system("cls");
-				printf("´ç½ÅÀÇ Á÷¾÷Àº Àü»ç°¡ µÇ¾ú½À´Ï´Ù.\n\n");
+				printf("ë‹¹ì‹ ì˜ ì§ì—…ì€ ì „ì‚¬ê°€ ë˜ì—ˆìŠµë‹ˆë‹¤.\n\n");
 				hp = 150;
 				temp = hp;
-				strcpy(job, "Àü»ç");
+				strcpy(job, "ì „ì‚¬");
 				damage = rand() % 3 + 7;
 				defense = 8;
 			}
 			else if (YN == 'n' || YN == 'N')
 			{
 				system("cls");
-				printf("¼±ÅÃµÇÁö ¾Ê¾Ò½À´Ï´Ù.\n\n");
+				printf("ì„ íƒë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.\n\n");
 				continue;
 			}
 			else
 			{
 				system("cls");
-				printf("Y/N·Î ¼±ÅÃÇØÁÖ¼¼¿ä.\n\n");
+				printf("Y/Në¡œ ì„ íƒí•´ì£¼ì„¸ìš”.\n\n");
 				continue;
 			}
 			break;
 		}
 		case 2:
 		{
-			printf("±Ã¼ö\n");
+			printf("ê¶ìˆ˜\n");
 			printf("HP: 120\n");
-			printf("°ø°İ·Â: 11~13\n");
-			printf("»ç¿ë¹«±â: È°, ¼®±Ã, ¼è³ú\n");
-			printf("Àåºñ: °æ°©\n\n");
+			printf("ê³µê²©ë ¥: 11~13\n");
+			printf("ì‚¬ìš©ë¬´ê¸°: í™œ, ì„ê¶, ì‡ ë‡Œ\n");
+			printf("ì¥ë¹„: ê²½ê°‘\n\n");
 
 			getchar();
-			printf("Á¤¸»·Î ¼±ÅÃÇÏ½Ã°Ú½À´Ï±î? Y/N \n>>");
+			printf("ì •ë§ë¡œ ì„ íƒí•˜ì‹œê² ìŠµë‹ˆê¹Œ? Y/N \n>>");
 			scanf("%c", &YN);
 
 			if (YN == 'y' || YN == 'Y')
 			{
 				system("cls");
-				printf("´ç½ÅÀÇ Á÷¾÷Àº ±Ã¼ö°¡ µÇ¾ú½À´Ï´Ù.\n\n");
+				printf("ë‹¹ì‹ ì˜ ì§ì—…ì€ ê¶ìˆ˜ê°€ ë˜ì—ˆìŠµë‹ˆë‹¤.\n\n");
 				hp = 120;
 				temp = hp;
-				strcpy(job, "±Ã¼ö");
+				strcpy(job, "ê¶ìˆ˜");
 				damage = damage = rand() % 3 + 11;
 			}
 			else if (YN == 'n' || YN == 'N')
 			{
 				system("cls");
-				printf("¼±ÅÃµÇÁö ¾Ê¾Ò½À´Ï´Ù.\n\n");
+				printf("ì„ íƒë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.\n\n");
 				continue;
 			}
 			else
 			{
 				system("cls");
-				printf("Y/N·Î ¼±ÅÃÇØÁÖ¼¼¿ä.\n\n");
+				printf("Y/Në¡œ ì„ íƒí•´ì£¼ì„¸ìš”.\n\n");
 				continue;
 			}
 			break;
@@ -98,7 +98,7 @@ int main(void)
 		case 3:
 		{
 			system("cls");
-			printf("¾÷µ¥ÀÌÆ® ÁßÀÔ´Ï´Ù.\n\n");
+			printf("ì—…ë°ì´íŠ¸ ì¤‘ì…ë‹ˆë‹¤.\n\n");
 			continue;
 		}
 		}
@@ -107,13 +107,13 @@ int main(void)
 	while (1)
 	{
 	back:
-		printf("%d¹øÂ° ³¯\n", today);
-		printf("¹«¾ùÀ» ÇÏ½Ã°Ú½À´Ï±î?(1:»ç³ÉÅÍ·Î ÀÌµ¿, 2: ¾ÆÀÌÅÛÀ» ¹Ù²Û´Ù, 3: ÁıÀ¸·Î)\n>>");
+		printf("%dë²ˆì§¸ ë‚ \n", today);
+		printf("ë¬´ì—‡ì„ í•˜ì‹œê² ìŠµë‹ˆê¹Œ?(1:ì‚¬ëƒ¥í„°ë¡œ ì´ë™, 2: ì•„ì´í…œì„ ë°”ê¾¼ë‹¤, 3: ì§‘ìœ¼ë¡œ)\n>>");
 		scanf_s("%d", &cho);
 		if (cho > 3 || cho < 1)
 		{
 			system("cls");
-			printf("¼±ÅÃÁö´Â 3°³¸¸ ¼±ÅÃ°¡´ÉÇÕ´Ï´Ù.\n\n");
+			printf("ì„ íƒì§€ëŠ” 3ê°œë§Œ ì„ íƒê°€ëŠ¥í•©ë‹ˆë‹¤.\n\n");
 			continue;
 		}
 
@@ -123,24 +123,24 @@ int main(void)
 		case 1:
 		{
 			system("cls");
-			printf("¸ÊÀ» ¼±ÅÃÇÏ¼¼¿ä.(1. ½£ 2. )\n");
+			printf("ë§µì„ ì„ íƒí•˜ì„¸ìš”.(1. ìˆ² 2. )\n");
 			scanf_s("%d", &map);
 			if (map == 1)
 			{
 				system("cls");
-				printf("½£À¸·Î °¬´Ù.\n\n");
+				printf("ìˆ²ìœ¼ë¡œ ê°”ë‹¤.\n\n");
 
-				per = rand() % 101 + 1;//¸ó½ºÅÍ ÃâÇö
+				per = rand() % 101 + 1;//ëª¬ìŠ¤í„° ì¶œí˜„
 				if (1 <= per && per <= 5)//5%
 				{
 					system("cls");
-					printf("¾Æ¹«°Íµµ ÃâÇöÇÏÁö ¾Ê¾Ò´Ù.\n");
+					printf("ì•„ë¬´ê²ƒë„ ì¶œí˜„í•˜ì§€ ì•Šì•˜ë‹¤.\n");
 				}
 				if (6 <= per && per <= 100)//20%
 				{
 					system("cls");
-					printf("½½¶óÀÓÀÌ ÃâÇöÇÏ¿´´Ù.\n\n");
-					strcpy(monster, "½½¶óÀÓ");
+					printf("ìŠ¬ë¼ì„ì´ ì¶œí˜„í•˜ì˜€ë‹¤.\n\n");
+					strcpy(monster, "ìŠ¬ë¼ì„");
 				}
 			}
 			break;
@@ -148,32 +148,39 @@ int main(void)
 		case 2:
 		{
 			system("cls");
-			printf("³ªÀÇ ¾ÆÀÌÅÛ ¸ñ·Ï\n\n");
+			printf("ë‚˜ì˜ ì•„ì´í…œ ëª©ë¡\n\n");
+
 			for (i = 0; item[i] != '\0'; i++)
 			{
-				printf("%4s", item[i]);
-				scanf("%d", &i);
-				if (1 <= i && i <= 50)
+				if (item[i] == '\0') {
+					printf("ì•„ì´í…œì´ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤!");
+					Sleep(500);
+					system("cls");
+					goto back;
+				}
+				else {
+				printf("%s", item[i]);
+				/*if (1 <= i && i <= 50)
 				{
-					printf("¾ÆÀÌÅÛÀ» ±³Ã¼ÇÏ½Ã°Ú½À´Ï±î? Y/N\n>>");
+					printf("ì•„ì´í…œì„ êµì²´í•˜ì‹œê² ìŠµë‹ˆê¹Œ? Y/N\n>>");
 					getchar();
 					scanf("%c", &YN);
 					printf("\n");
 					if (YN == 'y' || YN == 'Y')
 					{
 						system("cls");
-						printf("%d¹øÂ° ¾ÆÀÌÅÛ %s\n", i, item[i]);
+						printf("%dë²ˆì§¸ ì•„ì´í…œ %s\n", i, item[i]);
 					}
 					else if (YN == 'n' || YN == 'N')
 					{
 						system("cls");
-						printf("¼±ÅÃµÇÁö ¾Ê¾Ò½À´Ï´Ù.\n\n");
+						printf("ì„ íƒë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.\n\n");
 						continue;
 					}
 					else
 					{
 						system("cls");
-						printf("Y/N·Î ¼±ÅÃÇØÁÖ¼¼¿ä.\n\n");
+						printf("Y/Në¡œ ì„ íƒí•´ì£¼ì„¸ìš”.\n\n");
 						continue;
 					}
 				}
@@ -185,8 +192,9 @@ int main(void)
 				else
 				{
 					system("cls");
-					printf("1~50»çÀÌ¸¸ ¼±ÅÃ°¡´ÉÇÕ´Ï´Ù.\n");
+					printf("1~50ì‚¬ì´ë§Œ ì„ íƒê°€ëŠ¥í•©ë‹ˆë‹¤.\n");
 					continue;
+				}*/
 				}
 			}
 			break;
@@ -197,24 +205,24 @@ int main(void)
 			pati = 0;
 			today++;
 			hp = temp;
-			printf("Áı¿¡¼­ ½¬¾î Ã¼·ÂÀÌ È¸º¹µÇ¾ú´Ù.\n");
-			printf("ÇÏ·ç°¡ Áö³µ´Ù.\n\n");
+			printf("ì§‘ì—ì„œ ì‰¬ì–´ ì²´ë ¥ì´ íšŒë³µë˜ì—ˆë‹¤.\n");
+			printf("í•˜ë£¨ê°€ ì§€ë‚¬ë‹¤.\n\n");
 			break;
 		}
 		}
 
-		if (per >= 5)//¸ó½ºÅÍ ÃâÇö
+		if (per >= 5)//ëª¬ìŠ¤í„° ì¶œí˜„
 		{
-			if (strcmp(monster, "½½¶óÀÓ") == 0)
+			if (strcmp(monster, "ìŠ¬ë¼ì„") == 0)
 			{
 				mhp = 50;
-				printf("%sÀÇ hp: %d\n", monster, mhp);//¸ó½ºÅÍ ÆÇ´Ü
+				printf("%sì˜ hp: %d\n", monster, mhp);//ëª¬ìŠ¤í„° íŒë‹¨
 
 				while (1)
 				{
 					mdamage = rand() % 5 + 1;
-					printf("%sÀÇ °ø°İ·Â: 1~5\n", monster);
-					printf("¾î¶»°Ô ÇÒ±î?(1. ½Î¿î´Ù 2. µµ¸ÁÄ£´Ù.)\n>>");
+					printf("%sì˜ ê³µê²©ë ¥: 1~5\n", monster);
+					printf("ì–´ë–»ê²Œ í• ê¹Œ?(1. ì‹¸ìš´ë‹¤ 2. ë„ë§ì¹œë‹¤.)\n>>");
 					scanf("%d", &work);
 					system("cls");
 					if (work == 1)
@@ -222,33 +230,36 @@ int main(void)
 						system("cls");
 						mhp = mhp - damage;
 						hp = hp - mdamage;
-						printf("%sÀÇ hp°¡ %d´Ş¾Ò´Ù.\n", monster, damage);
-						printf("%sÀÇ hp: %d\n", monster, mhp);
-						printf("³ªÀÇ hp°¡ %d´Ş¾Ò´Ù.\n", mdamage);
-						printf("³ªÀÇ hp: %d\n\n", hp);
-						if (mhp <= 0)//¾ÆÀÌÅÛÀ» È¹µæ
+						printf("%sì˜ hpê°€ %dë‹¬ì•˜ë‹¤.\n", monster, damage);
+						printf("%sì˜ hp: %d\n", monster, mhp);
+						printf("ë‚˜ì˜ hpê°€ %dë‹¬ì•˜ë‹¤.\n", mdamage);
+						printf("ë‚˜ì˜ hp: %d\n\n", hp);
+						if (mhp <= 0)//ì•„ì´í…œì„ íšë“
 						{
 							system("cls");
-							printf("%sÀÌ/°¡ Á×¾ú´Ù.\n\n", monster);
+							printf("%sì´/ê°€ ì£½ì—ˆë‹¤.\n\n", monster);
 							iper = rand() % 101 + 1;
 							if (1 <= iper && iper <= 100)
 							{
-								printf("¾ÆÀÌÅÛ 1À» ¾ò¾ú´Ù.");
-								strcpy(item[j], "¾ÆÀÌÅÛ 1");
-								j++;
+								printf("ì•„ì´í…œ 1ì„ ì–»ì—ˆë‹¤.");
+								strcpy(item, "ì•„ì´í…œ 1");
+								Sleep(1000);
+								system("cls");
+								today++;
+								goto back;
 							}
 						}
 						if (hp <= 0)
 						{
 							system("cls");
-							printf("10¾ïÀ» ¹Ş¾Ò½À´Ï´Ù.\n\n");
+							printf("10ì–µì„ ë°›ì•˜ìŠµë‹ˆë‹¤.\n\n");
 
-							printf("´Ù½Ã µµÀüÇÏ½Ã°Ú½À´Ï±î? Y/N\n>>");
+							printf("ë‹¤ì‹œ ë„ì „í•˜ì‹œê² ìŠµë‹ˆê¹Œ? Y/N\n>>");
 							scanf("%c", &YN);
 							if (YN == 'y' || YN == 'Y')
 							{
 								system("cls");
-								printf("ºÎÈ°ÇÏ¼Ì½À´Ï´Ù.\n\n");
+								printf("ë¶€í™œí•˜ì…¨ìŠµë‹ˆë‹¤.\n\n");
 
 								goto resurrection;
 							}
@@ -259,12 +270,12 @@ int main(void)
 								return 0;
 							}
 						}
-						goto back;
+						
 					}
 					if (work == 2)
 					{
 						system("cls");
-						printf("¹«»çÈ÷ µµ¸ÁÃÆ´Ù.\n\n");
+						printf("ë¬´ì‚¬íˆ ë„ë§ì³¤ë‹¤.\n\n");
 						goto back;
 					}
 				}
@@ -272,7 +283,7 @@ int main(void)
 		}
 
 	}
-	//rand()¿¡ (void)°¡ ÀÌ¹Ì ÀÖ±â¶§¹®¿¡ ³ÖÀ» ÇÊ¿ä°¡ ¾ø´Ù.
-	//rnad() % 4 + 10Àº ·£´ıÇÔ¼ö¿¡ 4·Î ³ª´©°Ô µÈ´Ù¸é ³ª¸ÓÁö´Â 0~3»çÀÌ ±×¸®°í 10À» ´õÇÏ´Ï 10~13ÀÌ µÇ°Ô µÈ´Ù.
+	//rand()ì— (void)ê°€ ì´ë¯¸ ìˆê¸°ë•Œë¬¸ì— ë„£ì„ í•„ìš”ê°€ ì—†ë‹¤.
+	//rnad() % 4 + 10ì€ ëœë¤í•¨ìˆ˜ì— 4ë¡œ ë‚˜ëˆ„ê²Œ ëœë‹¤ë©´ ë‚˜ë¨¸ì§€ëŠ” 0~3ì‚¬ì´ ê·¸ë¦¬ê³  10ì„ ë”í•˜ë‹ˆ 10~13ì´ ë˜ê²Œ ëœë‹¤.
 	return 0;
 }
