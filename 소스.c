@@ -1,14 +1,18 @@
-#include<stdio.h>//standard input output
+#include <stdio.h>//standard input output
 #include <stdlib.h>//standard library 여기에 rand함수가 들어가 있다.
-#include<string.h>
-#include<windows.h>//화면 클리어가 들어있다 printf("cls");
+#include <string.h>
+#include <windows.h>//화면 클리어가 들어있다 printf("cls");
 int main(void)
 {
 	int cho, hp, damage, per, today = 1, i, j, pati = 0, map, weapon, defense, mhp, work, mdamage, temp, iper;//patigue 피로 choice 선택 percent 퍼센트 chracter 캐릭터 mhp 몬스터hp
 	char YN;
-	char item[100], monster[10], job[10];
+	char item[100], monster[10], job[10], item_read[100];
+	FILE *f;
 	//아이템을 얻을 때 rand함수를 0부터 100까지 하고 어디부터 어디까지는 어떤 아이템을 얻을 수 있도록 한다! 
 	//예를 들어 1~10까지 1번 아이템을 얻는다고 했을 때 100이 최대니깐 얻을 확률은 10%이다. 
+	f = fopen("item_Storage.txt", "wt");
+
+
 	while (1)//직업 선택
 	{
 	resurrection:
@@ -149,54 +153,11 @@ int main(void)
 		{
 			system("cls");
 			printf("나의 아이템 목록\n\n");
-
-			for (i = 0; item[i] != '\0'; i++)
-			{
-				if (item[i] == '\0') {
-					printf("아이템이 존재하지 않습니다!");
-					Sleep(500);
-					system("cls");
-					goto back;
-				}
-				else {
-				printf("%s", item[i]);
-				/*if (1 <= i && i <= 50)
-				{
-					printf("아이템을 교체하시겠습니까? Y/N\n>>");
-					getchar();
-					scanf("%c", &YN);
-					printf("\n");
-					if (YN == 'y' || YN == 'Y')
-					{
-						system("cls");
-						printf("%d번째 아이템 %s\n", i, item[i]);
-					}
-					else if (YN == 'n' || YN == 'N')
-					{
-						system("cls");
-						printf("선택되지 않았습니다.\n\n");
-						continue;
-					}
-					else
-					{
-						system("cls");
-						printf("Y/N로 선택해주세요.\n\n");
-						continue;
-					}
-				}
-				if (i == -1)
-				{
-					system("cls");
-					continue;
-				}
-				else
-				{
-					system("cls");
-					printf("1~50사이만 선택가능합니다.\n");
-					continue;
-				}*/
-				}
-			}
+			f = fopen("item_Storage.txt", "r");
+			fscanf(f, "%s", &item_read);
+			fclose(f);
+			printf("%s\n\n", item_read);
+			goto back;
 			break;
 		}
 		case 3:
@@ -241,8 +202,10 @@ int main(void)
 							iper = rand() % 101 + 1;
 							if (1 <= iper && iper <= 100)
 							{
-								printf("아이템 1을 얻었다.");
-								strcpy(item, "아이템 1");
+								printf("아이템1을 얻었다.");
+								f = fopen("item_Storage.txt", "wt");
+								fprintf(f, "아이템1");
+								fclose(f, "item_Storage.txt");
 								Sleep(1000);
 								system("cls");
 								today++;
@@ -270,7 +233,7 @@ int main(void)
 								return 0;
 							}
 						}
-						
+
 					}
 					if (work == 2)
 					{
