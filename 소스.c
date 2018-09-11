@@ -2,11 +2,15 @@
 #include <stdlib.h>//standard library 여기에 rand함수가 들어가 있다.
 #include <string.h>
 #include <windows.h>//화면 클리어가 들어있다 printf("cls");
+
+void line();
+void line2();
+
 int main(void)
 {
-	int cho, hp, damage, per, today = 1, i, j, pati = 0, map, weapon, defense, mhp, work, mdamage, temp, iper;//patigue 피로 choice 선택 percent 퍼센트 chracter 캐릭터 mhp 몬스터hp
+	int cho, hp, damage, per, today = 1, check, pati = 0, map, weapon, defense, mhp, work, mdamage, temp, iper, item_nm;//patigue 피로 choice 선택 percent 퍼센트 chracter 캐릭터 mhp 몬스터hp
 	char YN;
-	char item[100], monster[10], job[10], item_read[100];
+	char item[100], monster[10], job[10];
 	FILE *f;
 	//아이템을 얻을 때 rand함수를 0부터 100까지 하고 어디부터 어디까지는 어떤 아이템을 얻을 수 있도록 한다! 
 	//예를 들어 1~10까지 1번 아이템을 얻는다고 했을 때 100이 최대니깐 얻을 확률은 10%이다. 
@@ -27,6 +31,7 @@ int main(void)
 		}
 		switch (cho)
 		{
+			printf("1\n2\n3");
 		case 1:
 		{
 			printf("전사\n");
@@ -151,12 +156,22 @@ int main(void)
 		}
 		case 2:
 		{
+
 			system("cls");
 			printf("나의 아이템 목록\n\n");
 			f = fopen("item_Storage.txt", "r");
-			fscanf(f, "%s", &item_read);
+			fflush(stdin);
+			fgets(item, 999, f);
 			fclose(f);
-			printf("%s\n\n", item_read);
+			line();
+			printf(" 원하시는 무기를 선택하세요!");
+			line();
+			printf("\n%s\n", item);
+			line2();
+			printf("\n>>");
+			
+			
+			
 			goto back;
 			break;
 		}
@@ -168,6 +183,7 @@ int main(void)
 			hp = temp;
 			printf("집에서 쉬어 체력이 회복되었다.\n");
 			printf("하루가 지났다.\n\n");
+			goto back;
 			break;
 		}
 		}
@@ -202,10 +218,12 @@ int main(void)
 							iper = rand() % 101 + 1;
 							if (1 <= iper && iper <= 100)
 							{
-								printf("아이템1을 얻었다.");
-								f = fopen("item_Storage.txt", "wt");
-								fprintf(f, "아이템1");
-								fclose(f, "item_Storage.txt");
+								item_nm = rand() % 10 + 1;
+								
+								printf("아이템%d을 얻었다.", item_nm);
+								f = fopen("item_Storage.txt", "a");
+								fprintf(f, "아이템%d ", item_nm);
+								fclose(f);
 								Sleep(1000);
 								system("cls");
 								today++;
@@ -249,4 +267,12 @@ int main(void)
 	//rand()에 (void)가 이미 있기때문에 넣을 필요가 없다.
 	//rnad() % 4 + 10은 랜덤함수에 4로 나누게 된다면 나머지는 0~3사이 그리고 10을 더하니 10~13이 되게 된다.
 	return 0;
+}
+
+void line() {
+	printf("─────────────────");
+}
+
+void line2() {
+	printf("──────────────────────────────────────────────────────────────");
 }
